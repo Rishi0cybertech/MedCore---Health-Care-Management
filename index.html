@@ -1,1 +1,1165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriShield+ | Farmer–Buyer–Industry Marketplace</title>
+    <meta
+      name="description"
+      content="Direct agricultural marketplace connecting farmers, buyers, and industries. Sell crops, purchase raw material, and grow with trust-based rankings."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="#home" class="nav-brand">
+          <img src="logo.png" alt="AgriShield+ Logo" />AgriShield<span>+</span>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#home" class="active" data-view="home" data-i18n="nav_home"
+            >Home</a
+          >
+          <a
+            href="#marketplace"
+            data-view="marketplace"
+            data-i18n="nav_marketplace"
+            >Marketplace</a
+          >
+          <a href="#sell" data-view="sell" data-i18n="nav_sell">Sell</a>
+          <a href="#purchase" data-view="purchase" data-i18n="nav_purchase"
+            >Purchase</a
+          >
+          <a href="#profiles" data-view="profiles" data-i18n="nav_profiles"
+            >Profiles</a
+          >
+          <a
+            href="#simulation"
+            data-view="simulation"
+            data-i18n="nav_simulation"
+            >Simulation</a
+          >
+        </div>
+
+        <div class="nav-actions">
+          <div class="lang-toggle" id="langToggle">
+            <button class="active" data-lang="en">EN</button>
+            <button data-lang="hi">हिं</button>
+          </div>
+          <div class="burger" id="burger" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== HOME VIEW ==================== -->
+    <div class="view active" id="view-home">
+      <div class="price-ticker">
+        <div class="ticker-content">
+          <span data-i18n="ticker_wheat"
+            >🌾 Wheat (Mandi): ₹2,100 | AgriShield+: ₹2,350</span
+          >
+          <span data-i18n="ticker_rice"
+            >🍚 Rice (Mandi): ₹1,800 | AgriShield+: ₹2,050</span
+          >
+          <span data-i18n="ticker_cotton"
+            >☁️ Cotton (Mandi): ₹6,500 | AgriShield+: ₹7,200</span
+          >
+          <span data-i18n="ticker_potato"
+            >🥔 Potato (Mandi): ₹1,200 | AgriShield+: ₹1,450</span
+          >
+          <span data-i18n="ticker_wheat2"
+            >🌾 Wheat (Mandi): ₹2,100 | AgriShield+: ₹2,350</span
+          >
+          <span data-i18n="ticker_rice2"
+            >🍚 Rice (Mandi): ₹1,800 | AgriShield+: ₹2,050</span
+          >
+        </div>
+      </div>
+
+      <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+          <h1 class="fade-in" data-i18n="hero_title">
+            Shield Your Crop. <br /><span class="highlight"
+              >Scale Your Income.</span
+            >
+          </h1>
+          <p class="fade-in delay-1" data-i18n="hero_subtitle">
+            The intelligent layer for rural decision-making. Predict yield loss,
+            bypass middlemen, and optimize your market strategy with data-driven
+            precision.
+          </p>
+          <div class="hero-btns fade-in delay-2">
+            <button
+              class="btn btn-primary btn-lg"
+              onclick="router.go('marketplace')"
+              data-i18n="hero_sell"
+            >
+              Start Smart Selling
+            </button>
+            <button
+              class="btn btn-secondary btn-lg"
+              onclick="
+                document
+                  .getElementById('home-solution')
+                  .scrollIntoView({ behavior: 'smooth' })
+              "
+              data-i18n="hero_simulate"
+            >
+              Try Simulation
+            </button>
+          </div>
+          <div class="impact-stats fade-in delay-3">
+            <div class="stat-item">
+              <span class="stat-value">₹1000+</span>
+              <span class="stat-label" data-i18n="stat_extra"
+                >Extra Profit per ₹10k</span
+              >
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">5%</span>
+              <span class="stat-label" data-i18n="stat_commission"
+                >Flat Commission</span
+              >
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">100%</span>
+              <span class="stat-label" data-i18n="stat_transparent"
+                >Transparent Sales</span
+              >
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section id="home-problem" class="section problem-section">
+        <div class="container text-center">
+          <h2 class="section-title" data-i18n="problem_title">
+            The "Middleman Gap" is Costing You
+          </h2>
+          <p class="section-subtitle" data-i18n="problem_sub">
+            Traditional farming is a gamble. We turn it into a strategy.
+          </p>
+          <div class="grid problem-grid">
+            <div class="card">
+              <div class="card-icon">💸</div>
+              <h3 data-i18n="prob_income">Income Instability</h3>
+              <p data-i18n="prob_income_desc">
+                Market prices fluctuate wildly, leaving you guessing your
+                harvest value.
+              </p>
+            </div>
+            <div class="card">
+              <div class="card-icon">📉</div>
+              <h3 data-i18n="prob_taxes">Hidden Taxes</h3>
+              <p data-i18n="prob_taxes_desc">
+                Inefficient supply chains drain up to 40% of your potential
+                revenue.
+              </p>
+            </div>
+            <div class="card">
+              <div class="card-icon">🕵️</div>
+              <h3 data-i18n="prob_info">Information Gap</h3>
+              <p data-i18n="prob_info_desc">
+                No clear tools to decide: "Should I treat this disease or
+                harvest now?"
+              </p>
+            </div>
+            <div class="card">
+              <div class="card-icon">⚖️</div>
+              <h3 data-i18n="prob_mandi">Mandi Roulette</h3>
+              <p data-i18n="prob_mandi_desc">
+                Selling at local markets is often based on luck, not market
+                intelligence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="home-solution" class="section solution-section">
+        <div class="container">
+          <div class="split-layout">
+            <div class="content">
+              <span class="badge" data-i18n="sol_badge">The Innovation</span>
+              <h2 data-i18n="sol_title">AgriShield+ Intelligence Layer</h2>
+              <p data-i18n="sol_desc">
+                Not just a calculator, but a brain for your farm. We transform
+                raw data into actionable profit strategies.
+              </p>
+              <ul class="feature-list">
+                <li data-i18n="sol_f1">
+                  <strong>Disease Simulation:</strong> Real-time cost analysis
+                  of crop health issues.
+                </li>
+                <li data-i18n="sol_f2">
+                  <strong>Financial Modeling:</strong> Compare "Treat Now" vs
+                  "Delay" profit impacts.
+                </li>
+                <li data-i18n="sol_f3">
+                  <strong>Yield Calculations:</strong> Predict exactly what
+                  you'll harvest.
+                </li>
+                <li data-i18n="sol_f4">
+                  <strong>Market Routing:</strong> Mandi vs Direct vs Bulk
+                  selling comparisons.
+                </li>
+              </ul>
+            </div>
+            <div class="visual">
+              <div class="sim-card interactive-sim">
+                <div class="sim-header" data-i18n="sim_header">
+                  Real-Time Profit Strategy
+                </div>
+                <div class="sim-body">
+                  <div class="input-grid-sim">
+                    <div class="input-group">
+                      <label data-i18n="sim_harvest_label"
+                        >Expected Harvest (Quintals)</label
+                      >
+                      <input
+                        type="number"
+                        id="harvest-input"
+                        value="10"
+                        min="1"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label data-i18n="sim_rate_label"
+                        >Market Rate (₹ per Qtl)</label
+                      >
+                      <input
+                        type="number"
+                        id="rate-input"
+                        value="2000"
+                        min="500"
+                      />
+                    </div>
+                  </div>
+                  <div class="sim-divider" data-i18n="sim_costs_label">
+                    Input Costs (Kharcha)
+                  </div>
+                  <div class="input-grid-sim">
+                    <div class="input-group">
+                      <label data-i18n="sim_seeds_label"
+                        >Seeds & Fertilizer (₹)</label
+                      >
+                      <input
+                        type="number"
+                        id="seed-cost"
+                        value="2000"
+                        min="0"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label data-i18n="sim_labor_label"
+                        >Labor & Irrigation (₹)</label
+                      >
+                      <input
+                        type="number"
+                        id="labor-cost"
+                        value="3000"
+                        min="0"
+                      />
+                    </div>
+                  </div>
+                  <div class="results-display">
+                    <div class="res-row">
+                      <span data-i18n="sim_gmv">Gross Market Value</span
+                      ><span id="gross-total">₹20,000</span>
+                    </div>
+                    <div class="res-row">
+                      <span data-i18n="sim_kharcha">Your Costs (Kharcha)</span
+                      ><span id="total-kharcha">₹5,000</span>
+                    </div>
+                    <div class="res-row">
+                      <span data-i18n="sim_mandi_net">Mandi Net Profit</span
+                      ><span id="mandi-total">₹12,000</span>
+                    </div>
+                    <div class="res-row highlight-row">
+                      <span data-i18n="sim_agri_net"
+                        >AgriShield+ Net Profit</span
+                      ><span id="agri-total">₹14,000</span>
+                    </div>
+                    <div class="profit-badge" data-i18n="sim_saving_label">
+                      Actual Net Saving: <span id="extra-income">₹2,000</span>
+                    </div>
+                  </div>
+                  <div class="sim-chart">
+                    <div
+                      class="bar bar-1"
+                      id="bar-mandi"
+                      style="height: 60%"
+                    ></div>
+                    <div
+                      class="bar bar-2"
+                      id="bar-agri"
+                      style="height: 85%"
+                    ></div>
+                  </div>
+                  <p class="sim-note" data-i18n="sim_note_home">
+                    *Calculated after 15% Mandi fees vs 5% Platform fee
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="home-steps" class="section steps-section">
+        <div class="container text-center">
+          <h2 class="section-title" data-i18n="steps_title">
+            Success in 4 Simple Steps
+          </h2>
+          <div class="steps-grid">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <h3 data-i18n="step1_title">Enter Details</h3>
+              <p data-i18n="step1_desc">
+                Put in your crop type, acreage, and health status.
+              </p>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <h3 data-i18n="step2_title">Analyze Profit</h3>
+              <p data-i18n="step2_desc">
+                Get instant insights on yield loss and harvest value.
+              </p>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <h3 data-i18n="step3_title">Compare Markets</h3>
+              <p data-i18n="step3_desc">
+                See the difference between Mandi and Bulk buyers.
+              </p>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <h3 data-i18n="step4_title">Maximize Income</h3>
+              <p data-i18n="step4_desc">
+                Choose the best option and start selling smart.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="home-comparison" class="section">
+        <div class="container">
+          <div class="comparison-table-wrapper">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th data-i18n="cmp_model">Selling Model</th>
+                  <th data-i18n="cmp_revenue">Typical Revenue</th>
+                  <th data-i18n="cmp_deductions">Deductions</th>
+                  <th data-i18n="cmp_profit">Your Net Profit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-i18n="cmp_mandi">Traditional Mandi</td>
+                  <td>₹10,000</td>
+                  <td data-i18n="cmp_mandi_ded">10-15% (Fees/Middlemen)</td>
+                  <td class="mandi-profit">₹8,500</td>
+                </tr>
+                <tr class="agri-row">
+                  <td>
+                    <strong data-i18n="cmp_agri">AgriShield+ Direct</strong>
+                  </td>
+                  <td>₹10,000</td>
+                  <td data-i18n="cmp_agri_ded">5% (Platform Fee)</td>
+                  <td class="agri-profit">₹9,500</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-caption text-center" data-i18n="cmp_note">
+            *Transparent 5% commission on transactions above ₹5000.
+          </p>
+        </div>
+      </section>
+
+      <section id="home-graph" class="section graph-section">
+        <div class="container">
+          <div class="graph-header text-center">
+            <span class="badge" data-i18n="graph_badge"
+              >📈 Live Market Intelligence</span
+            >
+            <h2 class="section-title" data-i18n="graph_title">
+              Real-Time Profit Tracker
+            </h2>
+            <p class="section-subtitle" data-i18n="graph_sub">
+              Watch how your profits grow with AgriShield+ vs traditional Mandi
+              selling — updated live every 2 seconds.
+            </p>
+          </div>
+          <div class="graph-card">
+            <div class="crop-selector">
+              <span class="selector-label" data-i18n="graph_select"
+                >Select Crop:</span
+              >
+              <div class="crop-btns">
+                <button class="crop-btn active" data-crop="wheat">
+                  🌾 Wheat
+                </button>
+                <button class="crop-btn" data-crop="rice">🍚 Rice</button>
+                <button class="crop-btn" data-crop="cotton">🌿 Cotton</button>
+                <button class="crop-btn" data-crop="potato">🥔 Potato</button>
+                <button class="crop-btn" data-crop="tomato">🍅 Tomato</button>
+              </div>
+              <div class="live-badge"><span class="live-dot"></span> LIVE</div>
+            </div>
+            <div class="chart-wrapper"><canvas id="profitChart"></canvas></div>
+            <div class="graph-stats-row">
+              <div class="gstat-item">
+                <span class="gstat-icon">🏪</span>
+                <div>
+                  <div class="gstat-label" data-i18n="graph_mandi_avg">
+                    Mandi Avg Profit
+                  </div>
+                  <div class="gstat-value mandi-color" id="graph-mandi-avg">
+                    ₹0
+                  </div>
+                </div>
+              </div>
+              <div class="gstat-divider"></div>
+              <div class="gstat-item">
+                <span class="gstat-icon">🛡️</span>
+                <div>
+                  <div class="gstat-label" data-i18n="graph_agri_avg">
+                    AgriShield+ Avg Profit
+                  </div>
+                  <div class="gstat-value agri-color" id="graph-agri-avg">
+                    ₹0
+                  </div>
+                </div>
+              </div>
+              <div class="gstat-divider"></div>
+              <div class="gstat-item">
+                <span class="gstat-icon">💰</span>
+                <div>
+                  <div class="gstat-label" data-i18n="graph_extra">
+                    Extra You Earn
+                  </div>
+                  <div class="gstat-value gain-color" id="graph-gain">₹0</div>
+                </div>
+              </div>
+              <div class="gstat-divider"></div>
+              <div class="gstat-item">
+                <span class="gstat-icon">📊</span>
+                <div>
+                  <div class="gstat-label" data-i18n="graph_rate">
+                    Current Rate
+                  </div>
+                  <div class="gstat-value" id="graph-rate">₹0 /Qtl</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="home-matching" class="section matching-section">
+        <div class="container">
+          <h2 class="section-title text-center" data-i18n="match_title">
+            Smart Buyer Matchmaking
+          </h2>
+          <p class="section-subtitle text-center" data-i18n="match_sub">
+            Direct-to-Buyer matches based on your harvest profile.
+          </p>
+          <div class="buyer-grid">
+            <div class="buyer-card">
+              <div class="buyer-badge">98% Match</div>
+              <h3>Reliance Retail</h3>
+              <p data-i18n="match_reliance">Bulk Procurement: A-Grade</p>
+              <div class="buyer-price">₹2,450 / Qtl</div>
+              <button class="btn btn-primary btn-sm" data-i18n="match_connect">
+                Connect Direct
+              </button>
+            </div>
+            <div class="buyer-card highlight-card">
+              <div class="buyer-badge">95% Match</div>
+              <h3>ITC Choupal</h3>
+              <p data-i18n="match_itc">Premium Bulk Order</p>
+              <div class="buyer-price">₹2,380 / Qtl</div>
+              <button class="btn btn-primary btn-sm" data-i18n="match_connect">
+                Connect Direct
+              </button>
+            </div>
+            <div class="buyer-card">
+              <div class="buyer-badge">Premium</div>
+              <h3>BigBasket Agri</h3>
+              <p data-i18n="match_bb">Direct Distribution</p>
+              <div class="buyer-price">₹2,500 / Qtl</div>
+              <button class="btn btn-primary btn-sm" data-i18n="match_connect">
+                Connect Direct
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="home-features" class="section features-section">
+        <div class="container">
+          <h2 class="section-title text-center" data-i18n="feat_section_title">
+            Designed for the Rural Reality
+          </h2>
+          <div class="bento-grid">
+            <div class="bento-item bento-large">
+              <h3 data-i18n="bento_disease">Visual Disease Library</h3>
+              <p data-i18n="bento_disease_desc">
+                Match symptoms with HQ images for instant analysis.
+              </p>
+            </div>
+            <div class="bento-item">
+              <h3 data-i18n="bento_bilingual">Bilingual</h3>
+              <p data-i18n="bento_bilingual_desc">
+                Toggle between Hindi and English with one tap.
+              </p>
+            </div>
+            <div class="bento-item">
+              <h3 data-i18n="bento_mobile">Mobile Ready</h3>
+              <p data-i18n="bento_mobile_desc">
+                Low bandwidth optimization for rural connectivity.
+              </p>
+            </div>
+            <div class="bento-item bento-medium">
+              <h3 data-i18n="bento_bulk">Bulk Order Matching</h3>
+              <p data-i18n="bento_bulk_desc">
+                Direct connectivity to corporate buyers and cooperatives.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== MARKETPLACE VIEW ==================== -->
+    <div class="view" id="view-marketplace">
+      <div class="container">
+        <h1 class="page-title" data-i18n="market_title">🏪 Marketplace</h1>
+        <p class="page-subtitle" data-i18n="market_sub">
+          Browse all crop listings, raw materials & processed products.
+        </p>
+
+        <div class="market-toolbar">
+          <input
+            type="text"
+            class="search-box"
+            id="marketSearch"
+            data-i18n-placeholder="market_search_ph"
+            placeholder="Search crops, products..."
+          />
+          <div class="filter-pills">
+            <button
+              class="filter-pill active"
+              data-filter="all"
+              data-i18n="filter_all"
+            >
+              All
+            </button>
+            <button
+              class="filter-pill"
+              data-filter="farmer"
+              data-i18n="filter_farmer"
+            >
+              🌾 Farmer
+            </button>
+            <button
+              class="filter-pill"
+              data-filter="buyer"
+              data-i18n="filter_buyer"
+            >
+              🛒 Buyer
+            </button>
+            <button
+              class="filter-pill"
+              data-filter="industry"
+              data-i18n="filter_industry"
+            >
+              🏭 Industry
+            </button>
+          </div>
+        </div>
+
+        <div class="listing-grid" id="listingGrid">
+          <!-- Listings rendered by JS -->
+        </div>
+        <div class="empty-state" id="marketEmpty" style="display: none">
+          <div class="empty-icon">📭</div>
+          <h3 data-i18n="empty_market">No listings found</h3>
+          <p data-i18n="empty_market_desc">
+            Try adjusting your search or filters.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SELL VIEW ==================== -->
+    <div class="view" id="view-sell">
+      <div class="container">
+        <h1 class="page-title" data-i18n="sell_title">📦 Sell Your Product</h1>
+        <p class="page-subtitle" data-i18n="sell_sub">
+          List your crop or product for buyers & industries to find easily.
+        </p>
+
+        <div class="card sell-form-card">
+          <div class="form-group">
+            <label data-i18n="sell_role">Your Role</label>
+            <select class="form-control" id="sellRole">
+              <option value="farmer" data-i18n="role_farmer">Farmer</option>
+              <option value="industry" data-i18n="role_industry">
+                Industry
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-i18n="sell_product">Product / Crop Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="sellProduct"
+              data-i18n-placeholder="sell_product_ph"
+              placeholder="e.g. Wheat, Rice, Cotton, Processed Flour"
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="sell_qty">Quantity (Quintals / Kg)</label>
+              <input
+                type="number"
+                class="form-control"
+                id="sellQty"
+                min="1"
+                value="10"
+                placeholder="10"
+              />
+            </div>
+            <div class="form-group">
+              <label data-i18n="sell_price">Price (₹ per unit)</label>
+              <input
+                type="number"
+                class="form-control"
+                id="sellPrice"
+                min="1"
+                value="2200"
+                placeholder="2200"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="sell_location">Location</label>
+              <input
+                type="text"
+                class="form-control"
+                id="sellLocation"
+                data-i18n-placeholder="sell_location_ph"
+                placeholder="e.g. Lucknow, UP"
+              />
+            </div>
+            <div class="form-group">
+              <label data-i18n="sell_availability">Availability</label>
+              <select class="form-control" id="sellAvailability">
+                <option value="available" data-i18n="avail_available">
+                  Available Now
+                </option>
+                <option value="limited" data-i18n="avail_limited">
+                  Limited Stock
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="sell_seller">Seller Name</label>
+            <select class="form-control" id="sellSeller">
+              <!-- Populated by JS with profiles -->
+            </select>
+          </div>
+          <button
+            class="btn btn-primary btn-block"
+            id="btnCreateListing"
+            data-i18n="sell_submit"
+          >
+            📋 Create Listing
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PURCHASE VIEW ==================== -->
+    <div class="view" id="view-purchase">
+      <div class="container">
+        <h1 class="page-title" data-i18n="purchase_title">
+          🛒 Purchase Products
+        </h1>
+        <p class="page-subtitle" data-i18n="purchase_sub">
+          Find the best sellers, compare prices and trust ranks.
+        </p>
+
+        <div class="purchase-grid">
+          <div class="card purchase-filters card-flat">
+            <h3 data-i18n="purch_filter_title">🔍 Filters</h3>
+            <div class="form-group">
+              <label data-i18n="purch_search">Search Product</label>
+              <input
+                type="text"
+                class="form-control"
+                id="purchSearch"
+                data-i18n-placeholder="purch_search_ph"
+                placeholder="e.g. Wheat"
+              />
+            </div>
+            <div class="form-group">
+              <label data-i18n="purch_seller_type">Seller Type</label>
+              <select class="form-control" id="purchFilter">
+                <option value="all" data-i18n="filter_all">All</option>
+                <option value="farmer" data-i18n="filter_farmer">Farmer</option>
+                <option value="industry" data-i18n="filter_industry">
+                  Industry
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label data-i18n="purch_sort">Sort By</label>
+              <select class="form-control" id="purchSort">
+                <option value="price-asc" data-i18n="sort_price_low">
+                  Price: Low to High
+                </option>
+                <option value="price-desc" data-i18n="sort_price_high">
+                  Price: High to Low
+                </option>
+                <option value="trust" data-i18n="sort_trust">
+                  Trust Score
+                </option>
+              </select>
+            </div>
+            <button
+              class="btn btn-outline btn-block btn-sm"
+              id="btnPurchApply"
+              data-i18n="purch_apply"
+            >
+              Apply Filters
+            </button>
+          </div>
+
+          <div>
+            <div class="listing-grid" id="purchaseGrid">
+              <!-- Rendered by JS -->
+            </div>
+            <div class="empty-state" id="purchaseEmpty" style="display: none">
+              <div class="empty-icon">🔎</div>
+              <h3 data-i18n="empty_purchase">No matching products</h3>
+              <p data-i18n="empty_purchase_desc">
+                Try broadening your search or changing filters.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PROFILES VIEW ==================== -->
+    <div class="view" id="view-profiles">
+      <div class="container">
+        <div
+          class="flex-between"
+          style="margin-bottom: 24px; flex-wrap: wrap; gap: 12px"
+        >
+          <div>
+            <h1 class="page-title" data-i18n="profiles_title">
+              👤 Profiles & Trust Rankings
+            </h1>
+            <p
+              class="page-subtitle"
+              style="margin-bottom: 0"
+              data-i18n="profiles_sub"
+            >
+              All registered farmers, buyers & industries with their trust
+              scores.
+            </p>
+          </div>
+          <button
+            class="btn btn-primary"
+            id="btnNewProfile"
+            data-i18n="profiles_new"
+          >
+            + Create Profile
+          </button>
+        </div>
+
+        <!-- Create Profile Form (hidden by default) -->
+        <div
+          class="card"
+          id="profileFormCard"
+          style="display: none; margin-bottom: 24px; max-width: 600px"
+        >
+          <h3 style="margin-bottom: 16px" data-i18n="profile_create_title">
+            Create New Profile
+          </h3>
+          <div class="form-group">
+            <label data-i18n="profile_name">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="profileName"
+              data-i18n-placeholder="profile_name_ph"
+              placeholder="e.g. Ramesh Kumar"
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="profile_role">Role</label>
+              <select class="form-control" id="profileRole">
+                <option value="farmer" data-i18n="role_farmer">Farmer</option>
+                <option value="buyer" data-i18n="role_buyer">Buyer</option>
+                <option value="industry" data-i18n="role_industry">
+                  Industry
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label data-i18n="profile_location">Location</label>
+              <input
+                type="text"
+                class="form-control"
+                id="profileLocation"
+                data-i18n-placeholder="profile_location_ph"
+                placeholder="e.g. Lucknow, UP"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="profile_spec">Specialization / Interest</label>
+            <input
+              type="text"
+              class="form-control"
+              id="profileSpec"
+              data-i18n-placeholder="profile_spec_ph"
+              placeholder="e.g. Wheat, Organic Fertilizer, Flour Mill"
+            />
+          </div>
+          <div class="form-group">
+            <label data-i18n="profile_intent">Buying or Selling?</label>
+            <select class="form-control" id="profileIntent">
+              <option value="selling" data-i18n="intent_selling">
+                Selling
+              </option>
+              <option value="buying" data-i18n="intent_buying">Buying</option>
+              <option value="both" data-i18n="intent_both">Both</option>
+            </select>
+          </div>
+          <div style="display: flex; gap: 10px">
+            <button
+              class="btn btn-primary"
+              id="btnSaveProfile"
+              data-i18n="profile_save"
+            >
+              ✅ Save Profile
+            </button>
+            <button
+              class="btn btn-ghost"
+              id="btnCancelProfile"
+              data-i18n="profile_cancel"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter pills for profiles -->
+        <div
+          class="filter-pills"
+          style="margin-bottom: 20px"
+          id="profileFilters"
+        >
+          <button
+            class="filter-pill active"
+            data-filter="all"
+            data-i18n="filter_all"
+          >
+            All
+          </button>
+          <button
+            class="filter-pill"
+            data-filter="farmer"
+            data-i18n="filter_farmer"
+          >
+            🌾 Farmer
+          </button>
+          <button
+            class="filter-pill"
+            data-filter="buyer"
+            data-i18n="filter_buyer"
+          >
+            🛒 Buyer
+          </button>
+          <button
+            class="filter-pill"
+            data-filter="industry"
+            data-i18n="filter_industry"
+          >
+            🏭 Industry
+          </button>
+        </div>
+
+        <div class="grid-2" id="profileGrid">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SIMULATION VIEW ==================== -->
+    <div class="view" id="view-simulation">
+      <div class="container">
+        <h1 class="page-title text-center" data-i18n="sim_title">
+          🧮 Profit Planning Simulation
+        </h1>
+        <p class="page-subtitle text-center" data-i18n="sim_sub">
+          Plan your selling strategy in 3 simple steps.
+        </p>
+
+        <div class="sim-container">
+          <!-- Step Indicator -->
+          <div class="sim-steps">
+            <div class="sim-step active" id="simStep1">
+              <span class="step-num">1</span>
+              <span data-i18n="sim_step1">Select Crop</span>
+            </div>
+            <div class="sim-step" id="simStep2">
+              <span class="step-num">2</span>
+              <span data-i18n="sim_step2">Enter Details</span>
+            </div>
+            <div class="sim-step" id="simStep3">
+              <span class="step-num">3</span>
+              <span data-i18n="sim_step3">See Results</span>
+            </div>
+          </div>
+
+          <!-- Step 1: Select Crop -->
+          <div class="sim-panel active" id="simPanel1">
+            <div
+              class="card card-flat"
+              style="text-align: center; padding: 30px"
+            >
+              <h3 data-i18n="sim_pick_crop">What are you selling?</h3>
+              <p
+                style="color: var(--c-text-secondary); margin-bottom: 20px"
+                data-i18n="sim_pick_crop_desc"
+              >
+                Pick a crop or product to begin your profit estimation.
+              </p>
+              <div class="grid-3" id="simCropGrid">
+                <button class="card sim-crop-btn" data-crop="wheat">
+                  <span style="font-size: 2rem">🌾</span><br /><strong
+                    >Wheat</strong
+                  ><br /><small>₹2,200/Qtl</small>
+                </button>
+                <button class="card sim-crop-btn" data-crop="rice">
+                  <span style="font-size: 2rem">🍚</span><br /><strong
+                    >Rice</strong
+                  ><br /><small>₹1,900/Qtl</small>
+                </button>
+                <button class="card sim-crop-btn" data-crop="cotton">
+                  <span style="font-size: 2rem">🌿</span><br /><strong
+                    >Cotton</strong
+                  ><br /><small>₹6,800/Qtl</small>
+                </button>
+                <button class="card sim-crop-btn" data-crop="potato">
+                  <span style="font-size: 2rem">🥔</span><br /><strong
+                    >Potato</strong
+                  ><br /><small>₹1,200/Qtl</small>
+                </button>
+                <button class="card sim-crop-btn" data-crop="tomato">
+                  <span style="font-size: 2rem">🍅</span><br /><strong
+                    >Tomato</strong
+                  ><br /><small>₹2,000/Qtl</small>
+                </button>
+                <button class="card sim-crop-btn" data-crop="soybean">
+                  <span style="font-size: 2rem">🫘</span><br /><strong
+                    >Soybean</strong
+                  ><br /><small>₹4,600/Qtl</small>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Enter Details -->
+          <div class="sim-panel" id="simPanel2">
+            <div class="card card-flat" style="padding: 30px">
+              <h3 data-i18n="sim_details_title">Enter Your Details</h3>
+              <p
+                style="color: var(--c-text-secondary); margin-bottom: 20px"
+                data-i18n="sim_details_desc"
+              >
+                We just need a few numbers to calculate your profit.
+              </p>
+              <div class="form-group">
+                <label data-i18n="sim_harvest_qty"
+                  >How much will you harvest? (Quintals)</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="simQty"
+                  value="10"
+                  min="1"
+                />
+              </div>
+              <div class="form-group">
+                <label data-i18n="sim_costs"
+                  >Total costs so far? (Seeds + Labor + Transport) ₹</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="simCosts"
+                  value="5000"
+                  min="0"
+                />
+              </div>
+              <div class="form-group">
+                <label data-i18n="sim_channel">Where will you sell?</label>
+                <select class="form-control" id="simChannel">
+                  <option value="compare" data-i18n="sim_ch_compare">
+                    Compare Both (Mandi vs Direct)
+                  </option>
+                  <option value="mandi" data-i18n="sim_ch_mandi">
+                    Traditional Mandi
+                  </option>
+                  <option value="direct" data-i18n="sim_ch_direct">
+                    AgriShield+ Direct
+                  </option>
+                </select>
+              </div>
+              <div style="display: flex; gap: 10px">
+                <button
+                  class="btn btn-ghost"
+                  id="simBack1"
+                  data-i18n="sim_back"
+                >
+                  ← Back
+                </button>
+                <button
+                  class="btn btn-primary"
+                  id="simNext2"
+                  data-i18n="sim_calculate"
+                >
+                  Calculate Profit →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Results -->
+          <div class="sim-panel" id="simPanel3">
+            <div class="sim-result-card">
+              <p class="sub-text" data-i18n="sim_your_profit">
+                Your Estimated Profit
+              </p>
+              <div class="big-num" id="simResultProfit">₹0</div>
+              <p class="sub-text" id="simResultChannel">
+                via AgriShield+ Direct
+              </p>
+
+              <div class="sim-comparison" id="simCompare">
+                <div class="comp-item">
+                  <div class="comp-label" data-i18n="sim_mandi_profit">
+                    Mandi Profit
+                  </div>
+                  <div class="comp-value" id="simMandiProfit">₹0</div>
+                </div>
+                <div class="comp-item">
+                  <div class="comp-label" data-i18n="sim_direct_profit">
+                    AgriShield+ Profit
+                  </div>
+                  <div class="comp-value" id="simDirectProfit">₹0</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="card card-flat"
+              style="margin-top: 16px; padding: 20px; text-align: center"
+            >
+              <p
+                style="
+                  font-size: 1.1rem;
+                  font-weight: 600;
+                  color: var(--c-success);
+                "
+                id="simSavingsMsg"
+              ></p>
+              <p
+                style="
+                  color: var(--c-text-secondary);
+                  font-size: 0.9rem;
+                  margin-top: 6px;
+                "
+                data-i18n="sim_note"
+              >
+                *Calculated with 15% Mandi fees vs 5% AgriShield+ platform fee.
+              </p>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                gap: 10px;
+                margin-top: 20px;
+                justify-content: center;
+              "
+            >
+              <button class="btn btn-ghost" id="simBack2" data-i18n="sim_back">
+                ← Back
+              </button>
+              <button
+                class="btn btn-primary"
+                id="simRestart"
+                data-i18n="sim_restart"
+              >
+                🔄 Start Over
+              </button>
+              <button
+                class="btn btn-secondary"
+                onclick="router.go('sell')"
+                data-i18n="sim_go_sell"
+              >
+                📦 List & Sell Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TOAST ==================== -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-brand">AgriShield<span>+</span></div>
+        <p data-i18n="footer_text">
+          Digitally empowering the backbone of our nation. &copy; 2026
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
 
